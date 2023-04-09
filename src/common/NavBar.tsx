@@ -30,7 +30,7 @@ export const NavBar: React.FC<{}> = () => {
               <Grid item>
                 <Stack direction="row" spacing={2}>
                   <Button variant="contained" onClick={() => navigate("login")}>
-                    Loging
+                    Login
                   </Button>
                 </Stack>
               </Grid>

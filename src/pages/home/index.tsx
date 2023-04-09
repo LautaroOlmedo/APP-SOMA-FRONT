@@ -1,14 +1,20 @@
-import { Button, Container } from "@mui/material";
+import { Box, Button, Container, Grid } from "@mui/material";
 import React from "react";
-import { HeaderComponent } from "../../components";
+import { CardComponent, HeaderComponent } from "../../components";
 import { characters } from "../../api/characters";
+import { TypeCharacter } from "./interface/character.interface";
+import { Grid4x4Rounded } from "@mui/icons-material";
 
 export const HomePage: React.FC<{}> = () => {
+  const [allCharacters, setAllCharacter] = React.useState<
+    TypeCharacter[] | null
+  >(null);
+
   React.useEffect(() => {
     characters
-      .getById({ id: 1 })
+      .getAll({ page: 1 })
       .then((res) => {
-        console.log(res.data);
+        setAllCharacter(res.data.results);
       })
       .catch((err) => {
         console.error(err);
