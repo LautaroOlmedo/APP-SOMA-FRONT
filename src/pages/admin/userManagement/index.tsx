@@ -4,7 +4,7 @@ import { CardComponent, HeaderComponent } from "../../../components";
 import { characters } from "../../../api/characters";
 import { TypeCharacter } from "../../home/interface/character.interface";
 
-export const UserMAnagementPage: React.FC<{}> = () => {
+export const UserManagementPage: React.FC<{}> = () => {
   const [allCharacters, setAllCharacter] = React.useState<
     TypeCharacter[] | null
   >(null);
