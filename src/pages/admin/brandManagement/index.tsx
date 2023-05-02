@@ -1,9 +1,8 @@
-import { Box, Button, Container, Grid } from "@mui/material";
 import React from "react";
-import { BrandType } from "./interfaces/brand.interface";
-import { brands } from "../../api/brands";
+import { BrandType } from "../../home/interfaces/brand.interface";
+import { brands } from "../../../api/brands";
 
-export const HomePage: React.FC<{}> = () => {
+export const BrandsManagementPage: React.FC<{}> = () => {
   const [allCharacters, setAllCharacter] = React.useState<BrandType[] | null>(
     null
   );
@@ -20,5 +19,9 @@ export const HomePage: React.FC<{}> = () => {
   }, []);
   console.log(allCharacters);
 
-  return <div>hola mundo</div>;
+  return (
+    <div>
+      <div>ADMINISTRAR MARCAS</div>
+    </div>
+  );
 };
