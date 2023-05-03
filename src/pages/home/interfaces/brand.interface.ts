@@ -1,8 +1,12 @@
+import { UserType } from "./user.interface";
+
 export interface BrandType {
   brandName: string;
-  webSite: string | null;
-  image: string | null;
+  webSite: string;
+  image: string;
   id: string;
-  createdAt: string | Date;
-  updatedAt: string | Date;
+  createdAt: string;
+  updatedAt: string;
+  users: UserType[];
+  stores: string[];
 }
