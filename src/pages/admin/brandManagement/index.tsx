@@ -1,7 +1,7 @@
 import React from "react";
 import { BrandType } from "../../home/interfaces/brand.interface";
 import { brands } from "../../../api/brands";
-import { CardComponent } from "../../../components";
+import { BrandCartComponent } from "../../../components/Card";
 
 export const BrandsManagementPage: React.FC<{}> = () => {
   const [allBrands, setAllBrands] = React.useState<BrandType[] | null>(null);
@@ -27,7 +27,7 @@ export const BrandsManagementPage: React.FC<{}> = () => {
       <div>
         {allBrands?.length !== 0 ? (
           allBrands?.map((b) => (
-            <CardComponent
+            <BrandCartComponent
               key={b.id}
               id={b.id}
               brandName={b.brandName}

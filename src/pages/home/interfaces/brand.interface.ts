@@ -1,3 +1,4 @@
+import { StoreType } from "./store.interface";
 import { UserType } from "./user.interface";
 
 export interface BrandType {
@@ -8,5 +9,5 @@ export interface BrandType {
   createdAt: string;
   updatedAt: string;
   users: UserType[];
-  stores: string[];
+  stores: StoreType[];
 }
