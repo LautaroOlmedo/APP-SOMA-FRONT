@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { cartSlice } from "./slices";
-// ...
+import productsSlice from "./slices/products.slice";
+import { ProductType } from "../pages/home/interfaces/product.interface";
+
+//const thunk: ThunkMiddleware = thunkMiddleware;
 
 export const store = configureStore({
   reducer: {
-    cartReducer: cartSlice.reducer,
+    prodcutReducer: productsSlice,
   },
 });
 
@@ -12,3 +15,7 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
+
+export interface IRootState {
+  product: ProductType;
+}

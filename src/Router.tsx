@@ -8,6 +8,7 @@ import { RouterLayout } from "./common/RouterLayout";
 import { AdminPanelPage } from "./pages/admin/panel";
 import { BrandsManagementPage } from "./pages/admin/brandManagement";
 import { ProductsManagementPage } from "./pages/admin/productManagement";
+import { ProductsPage } from "./pages/product";
 
 export const AppRouter: React.FC<{}> = () => {
   return (
@@ -24,6 +25,8 @@ export const AppRouter: React.FC<{}> = () => {
         path="/admin/panel/products/productManagement"
         element={<ProductsManagementPage />}
       ></Route>
+
+      <Route path="/products" element={<ProductsPage />}></Route>
     </Routes>
   );
 };

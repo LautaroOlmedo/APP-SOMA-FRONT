@@ -1,4 +1,5 @@
 import { CategoryType } from "./category.interface";
+import { StocksIncludesType } from "./stocksIncludes.interface";
 
 export interface ProductType {
   id: string;
@@ -9,8 +10,8 @@ export interface ProductType {
   talle?: string;
   code: number;
   category: CategoryType;
-  //purchaseProduct: PurchaseProductsEntity[];
-  //stocksIncludes: StockProductsEntity[];
+  // purchaseProduct: PurchaseProductsEntity[];
+  stocksIncludes: StocksIncludesType[];
   createdAt: string;
   updatedAt: string;
 }
