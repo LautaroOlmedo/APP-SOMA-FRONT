@@ -8,38 +8,57 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
+import { Image } from "@mui/icons-material";
+import { UserType } from "../../pages/home/interfaces/user.interface";
 
-type CardsProp = {
+type BrandsProp = {
+  brandName: string;
+  webSite: string;
   image: string;
-  name: string;
-  species: string;
-  status: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  users: UserType[];
+  stores: string[];
 };
 
-export const CardComponent: React.FC<CardsProp> = ({
+export const CardComponent: React.FC<BrandsProp> = ({
+  brandName,
+  webSite,
   image,
-  name,
-  species,
-  status,
+  id,
+  createdAt,
+  updatedAt,
+  users,
+  stores,
 }) => {
   return (
-    <Card>
-      <CardMedia component="img" height="194" image={image} alt="Paella dish" />
-      <CardContent>
-        <Typography variant="h4" sx={{ mb: 1.5 }}>
-          {name}
-        </Typography>
-        <Divider />
-        <Typography sx={{ mt: 1.5 }}>Especie: {species}</Typography>
-        <Typography sx={{ mt: 1.5 }}>Estado: {status}</Typography>
-      </CardContent>
-      <CardContent>
-        <CardActions disableSpacing>
-          <Button fullWidth variant="contained" size="small">
-            Learn Moore
-          </Button>
-        </CardActions>
-      </CardContent>
-    </Card>
+    <div>
+      <ul>
+        <li>
+          Id: {id} <br /> <br />
+          Nombre: {brandName} <br /> <br />
+          Sitio Web: {webSite} <br /> <br />
+          imagen: {image} <br /> <br />
+          Nombre: {brandName} <br /> <br />
+          creado: {createdAt}
+          <br /> <br />
+          actualizado: {updatedAt}
+          <br /> <br />
+          {/* Usuarios:{" "} // REALMENTE HAY QUE PONER LOS USUARIOS Y TIENDAS? YA QUE LA IDEA ES ADMINISTRAR MARCAS
+          {users
+            ? users?.map((user) => (
+                <ul>
+                  <li>
+                    Nombre: {user.lastname}
+                    Apellido: {user.firstname}
+                  </li>
+                </ul>
+              ))
+            : "No se encontraron usuarios"}
+          Tiendas: {stores} */}
+        </li>
+      </ul>
+    </div>
   );
 };
