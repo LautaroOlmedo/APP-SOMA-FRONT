@@ -1,15 +1,6 @@
 import React from "react";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Divider,
-  Typography,
-} from "@mui/material";
-import { Image } from "@mui/icons-material";
 import { UserType } from "../../pages/home/interfaces/user.interface";
+import { StoreType } from "../../pages/home/interfaces/store.interface";
 
 type BrandsProp = {
   brandName: string;
@@ -19,10 +10,10 @@ type BrandsProp = {
   createdAt: string;
   updatedAt: string;
   users: UserType[];
-  stores: string[];
+  stores: StoreType[];
 };
 
-export const CardComponent: React.FC<BrandsProp> = ({
+export const BrandCartComponent: React.FC<BrandsProp> = ({
   brandName,
   webSite,
   image,
