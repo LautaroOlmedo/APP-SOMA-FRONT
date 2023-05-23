@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const NavBar: React.FC<{}> = () => {
   const navigate = useNavigate();
@@ -17,6 +17,9 @@ export const NavBar: React.FC<{}> = () => {
     <div>
       <div>SOMA APP</div>
       <button>LOGIN</button>
+      <Link to={"/login"}>
+        <button type="button">LOGIN</button>
+      </Link>
     </div>
   );
 };

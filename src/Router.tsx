@@ -9,12 +9,14 @@ import { AdminPanelPage } from "./pages/admin/panel";
 import { BrandsManagementPage } from "./pages/admin/brandManagement";
 import { ProductsManagementPage } from "./pages/admin/productManagement";
 import { ProductsPage } from "./pages/product";
+import LoginPage from "./pages/login";
 
 export const AppRouter: React.FC<{}> = () => {
   return (
     <Routes>
       <Route path="/" element={<RouterLayout />}></Route>
       <Route path="/home" element={<HomePage />}></Route>
+      <Route path="/login" element={<LoginPage />}></Route>
 
       <Route path="/admin/panel" element={<AdminPanelPage />}></Route>
       <Route
