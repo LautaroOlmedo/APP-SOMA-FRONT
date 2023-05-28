@@ -36,3 +36,18 @@ export const loadProductsAction = createAsyncThunk(
     }
   }
 );
+
+export const createProductAction = createAsyncThunk(
+  "products/create",
+  async (productData: ProductType) => {
+    try {
+      const response = await axios.post<ProductType>(
+        "http://localhost:8000/api/products/register",
+        productData
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Error al crear el producto");
+    }
+  }
+);

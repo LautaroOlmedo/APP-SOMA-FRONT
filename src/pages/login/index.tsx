@@ -11,6 +11,9 @@ import {
 // import { useNotification } from '../../context/notification.context';
 import { LoginValidate } from "../../utils/validateForm";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { loginAction } from "../../redux/actions/auth.actions";
 
 type LoginType = {
   username: string;
@@ -19,6 +22,7 @@ type LoginType = {
 
 const LoginPage: React.FC<{}> = () => {
   //const { getSuccess } = useNotification();
+  const dispatch = useDispatch();
   const formik = useFormik<LoginType>({
     initialValues: {
       username: "",
@@ -26,7 +30,9 @@ const LoginPage: React.FC<{}> = () => {
     },
     validationSchema: LoginValidate,
     onSubmit: (values: LoginType) => {
-      alert("De una perro");
+      useEffect(() => {
+        dispatch(loginAction as any); // ---> TODAVIA NO ESTÁ FUNCIONAL
+      }, [dispatch]);
     },
   });
 

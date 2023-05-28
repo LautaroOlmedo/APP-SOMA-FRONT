@@ -11,14 +11,9 @@ export const ProductsPage: React.FC<{}> = () => {
   useEffect(() => {
     dispatch(loadProductsAction() as any);
   }, [dispatch]);
-  // const [allProducts, setAllProducts] = React.useState<ProductType[] | null>(
-  //   null
-  // );
 
-  // TS infers type: (state: RootState) => boolean
   const selectIsOn = (state: RootState) => state.prodcutReducer;
 
-  // TS infers `isOn` is boolean
   const product = useSelector(selectIsOn);
   let allProducts = product.products;
   console.log(allProducts);
