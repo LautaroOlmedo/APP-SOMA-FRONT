@@ -1,92 +1,90 @@
-import React from "react";
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
-// import { useNotification } from '../../context/notification.context';
-import { LoginValidate } from "../../utils/validateForm";
-import { useFormik } from "formik";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import "./Login css/login.css";
 
-type LoginType = {
-  username: string;
-  password: string;
-};
+const LoginPage = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
-const LoginPage: React.FC<{}> = () => {
-  //const { getSuccess } = useNotification();
-  const formik = useFormik<LoginType>({
-    initialValues: {
-      username: "",
-      password: "",
-    },
-    validationSchema: LoginValidate,
-    onSubmit: (values: LoginType) => {
-      alert("De una perro");
-    },
-  });
+  const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const isMobile = window.innerWidth <= 767;
+
+  const loadingImage = isMobile ? "loadingm.png" : "loading.png";
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    alert("De una perro");
+  };
 
   return (
-    <Container maxWidth="sm">
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        sx={{ minHeight: "100vh" }}
-      >
-        <Grid item>
-          <Paper sx={{ padding: "1.2em", borderRadius: "0.5em" }}>
-            <Typography sx={{ mt: 1, mb: 1 }} variant="h4">
-              Iniciar sesion
-            </Typography>
-            <Box component="form" onSubmit={formik.handleSubmit}>
-              <TextField
-                name="username"
-                margin="normal"
+    <div className="container">
+      {isLoading ? (
+        <div className="loading-container">
+          <img src="loading.png" alt="Cargando..." className="loading-image" />
+        </div>
+      ) : (
+        <>
+          <div className="left-column">
+            <h1>SOMA EMPRENDE</h1>
+            <p>Una nueva forma de organizar tu negocio</p>
+            <form className="form" onSubmit={handleSubmit}>
+              <h2>Iniciar sesión</h2>
+              <input
                 type="text"
-                fullWidth
-                label="Email"
-                sx={{ mt: 2, mb: 1.5 }}
-                value={formik.values.username}
-                onChange={formik.handleChange}
-                error={
-                  formik.touched.username && Boolean(formik.errors.username)
-                }
-                helperText={formik.touched.username && formik.errors.username}
+                name="username"
+                placeholder="Correo electronico"
+                value={username}
+                onChange={handleUsernameChange}
               />
-              <TextField
-                name="password"
-                margin="normal"
+              <br />
+              <input
                 type="password"
-                fullWidth
-                label="Password"
-                sx={{ mt: 1.5, mb: 1.5 }}
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                error={
-                  formik.touched.password && Boolean(formik.errors.password)
-                }
-                helperText={formik.touched.password && formik.errors.password}
+                name="password"
+                placeholder="Contraseña"
+                value={password}
+                onChange={handlePasswordChange}
               />
+              <br />
+              <p className="forgot-password">¿Perdiste tu contraseña?</p>
+              <button type="submit">Acceder</button>
+            </form>
 
-              <Button
-                fullWidth
-                type="submit"
-                variant="contained"
-                sx={{ mt: 1.5, mb: 3 }}
-              >
-                Iniciar sesion
-              </Button>
-            </Box>
-          </Paper>
-        </Grid>
-      </Grid>
-    </Container>
+            <div className="social-media">
+              <p>Síguenos en las redes sociales:</p>
+              <div className="social-icons">
+                {/* Aquí puedes agregar los logos de las redes sociales */}
+                <a href="#">
+                  <img src="facebook.png" alt="Facebook" />
+                </a>
+                <a href="#">
+                  <img src="instagram.png" alt="Instagram" />
+                </a>
+                <a href="#">
+                  <img src="twitter.png" alt="Twitter" />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="right-column">
+            <img src="login.png" alt="Imagen" className="right-column-image" />
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 

@@ -1,62 +1,34 @@
 import React, { useEffect } from "react";
 import { ProductType } from "../home/interfaces/product.interface";
 import { products } from "../../api/products.api";
-import { ProductCartComponent } from "../../components/ProductCardComponent";
+import { ProductCartComponent } from "C:/Users/User/Desktop/APP-SOMA FRONT/APP-SOMA-FRONT/src/components/ProductCardComponent"; // Ajusta el nombre del componente
 import { useDispatch, useSelector } from "react-redux";
 import { loadProductsAction } from "../../redux/actions/products.actions";
 import { RootState } from "../../redux/store";
+// import Sidebar from "../../components/Sidebar"; // Ajusta la ruta del componente Sidebar
 
 export const ProductsPage: React.FC<{}> = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadProductsAction() as any);
   }, [dispatch]);
-  // const [allProducts, setAllProducts] = React.useState<ProductType[] | null>(
-  //   null
-  // );
 
-  // TS infers type: (state: RootState) => boolean
   const selectIsOn = (state: RootState) => state.prodcutReducer;
-
-  // TS infers `isOn` is boolean
   const product = useSelector(selectIsOn);
   let allProducts = product.products;
   console.log(allProducts);
 
-  // const productss = useSelector<any>((state) => state.productsSlice);
-  // const productsss = useSelector<IRootState, ProductType>(
-  //   (state) => state.product
-  // );
-
-  // if (loading) {
-  //   return <div>Cargando usuarios...</div>;
-  // }
-
-  // if (error) {
-  //   return <div>Ha ocurrido un error: {error}</div>;
-  // }
-  //console.log("PPPPP", productsss);
-
-  // React.useEffect(() => {
-  //   products
-  //     .getAll()
-  //     .then((res) => {
-  //       setAllProducts(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // });
   return (
     <div>
-      <div>ADMINISTRAR MARCAS</div>
+      {/* <Sidebar /> */}
+
       <br />
       <br />
       <br />
       <div>
         {allProducts?.length !== 0 ? (
           allProducts?.map((p: ProductType) => (
-            <ProductCartComponent
+            <ProductCartComponent // Ajusta el nombre del componente
               key={p.id}
               id={p.id}
               productName={p.productName}

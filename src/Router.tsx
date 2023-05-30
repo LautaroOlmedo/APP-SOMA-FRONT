@@ -14,21 +14,20 @@ import LoginPage from "./pages/login";
 export const AppRouter: React.FC<{}> = () => {
   return (
     <Routes>
-      <Route path="/" element={<RouterLayout />}></Route>
-      <Route path="/home" element={<HomePage />}></Route>
-      <Route path="/login" element={<LoginPage />}></Route>
-
-      <Route path="/admin/panel" element={<AdminPanelPage />}></Route>
-      <Route
-        path="/admin/panel/brands/brandManagement"
-        element={<BrandsManagementPage />}
-      ></Route>
-      <Route
-        path="/admin/panel/products/productManagement"
-        element={<ProductsManagementPage />}
-      ></Route>
-
-      <Route path="/products" element={<ProductsPage />}></Route>
+      <Route element={<RouterLayout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/admin/panel" element={<AdminPanelPage />} />
+        <Route
+          path="/admin/panel/brands/brandManagement"
+          element={<BrandsManagementPage />}
+        />
+        <Route
+          path="/admin/panel/products/productManagement"
+          element={<ProductsManagementPage />}
+        />
+        <Route path="/products" element={<ProductsPage />} />
+      </Route>
     </Routes>
   );
 };
