@@ -2,12 +2,15 @@ import { configureStore } from "@reduxjs/toolkit";
 import { cartSlice } from "./slices";
 import productsSlice from "./slices/products.slice";
 import { ProductType } from "../pages/home/interfaces/product.interface";
+import usersSlice from "./slices/users.slice";
+import { UserType } from "../pages/home/interfaces/user.interface";
 
 //const thunk: ThunkMiddleware = thunkMiddleware;
 
 export const store = configureStore({
   reducer: {
     prodcutReducer: productsSlice,
+    user: usersSlice,
   },
 });
 
@@ -18,4 +21,5 @@ export type AppDispatch = typeof store.dispatch;
 
 export interface IRootState {
   product: ProductType;
+  user: UserType;
 }

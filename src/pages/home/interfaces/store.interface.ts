@@ -1,6 +1,8 @@
+import { UserType } from "./user.interface";
+
 export interface StoreType {
   storeName: string;
-  usersIncludes: string[];
+  usersIncludes: UserType[];
   createdAt: string;
   updatedAt: string;
 }

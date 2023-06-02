@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CategoryType } from "../../pages/home/interfaces/category.interface";
-import "C:/Users/User/Desktop/APP-SOMA FRONT/APP-SOMA-FRONT/src/components/ProductCardComponent/products.css";
+import "./products.css";
 import Modal from "react-modal";
 
 type ProductProps = {

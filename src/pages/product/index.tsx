@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { ProductType } from "../home/interfaces/product.interface";
 import { products } from "../../api/products.api";
-import { ProductCartComponent } from "C:/Users/User/Desktop/APP-SOMA FRONT/APP-SOMA-FRONT/src/components/ProductCardComponent"; // Ajusta el nombre del componente
+import { ProductCartComponent } from "../../components/ProductCardComponent"; // Ajusta el nombre del componente
 import { useDispatch, useSelector } from "react-redux";
 import { loadProductsAction } from "../../redux/actions/products.actions";
 import { RootState } from "../../redux/store";
