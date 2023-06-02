@@ -1,0 +1,17 @@
+.hola {
+  display: flex;
+  height: 100%;
+  width: 25%;
+  flex: 0 0 25%; /* Ocupa el 100% del alto de la pantalla */
+  background-color: aqua;
+}
+
+.Sidebar {
+  height: 100%;
+  flex: 0 0 25%; /* Ocupa el 25% del ancho */
+  background-color: #f0f0f0; /* Cambia el color de fondo según tus necesidades */
+}
+
+/* Otros estilos para el Sidebar */
+
+/* Estilos adicionales para el contenido principal */
