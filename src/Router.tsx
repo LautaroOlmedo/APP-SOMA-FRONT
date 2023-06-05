@@ -11,6 +11,7 @@ import { ProductsManagementPage } from "./pages/admin/productManagement";
 import { ProductsPage } from "./pages/product";
 import LoginPage from "./pages/login";
 import { UsersPage } from "./pages/user";
+import CreateUser from "./pages/user/createUser";
 
 export const AppRouter: React.FC<{}> = () => {
   return (
@@ -29,6 +30,7 @@ export const AppRouter: React.FC<{}> = () => {
         />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/users" element={<UsersPage />} />
+        <Route path="/createUser" element={<CreateUser />} />
       </Route>
     </Routes>
   );

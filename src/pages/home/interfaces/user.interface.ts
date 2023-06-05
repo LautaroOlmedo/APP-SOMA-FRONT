@@ -1,3 +1,6 @@
+import { BrandType } from "./brand.interface";
+import { StoreType } from "./store.interface";
+
 export interface UserType {
   id: string;
   firstname: string;
@@ -7,7 +10,8 @@ export interface UserType {
   dni: string;
   password: string;
   role: string;
-  storesIncludes: string[]; // MODIFICAR POR INTERFACE DE STORES
+  brand: BrandType;
+  storesIncludes: StoreType[]; // MODIFICAR POR INTERFACE DE STORES
   createdAt: string;
   updatedAt: string;
 }

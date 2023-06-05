@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { CategoryType } from "../../pages/home/interfaces/category.interface";
 import "../../components/ProductCardComponent/products.css";
 import Modal from "react-modal";
+import { StoreType } from "../../pages/home/interfaces/store.interface";
+import { BrandType } from "../../pages/home/interfaces/brand.interface";
 
 type ProductProps = {
   id: string;
@@ -12,7 +14,8 @@ type ProductProps = {
   dni: string;
   password: string;
   role: string;
-  storesIncludes: string[]; // MODIFICAR POR INTERFACE DE STORES
+  brand: BrandType;
+  storesIncludes: StoreType[]; // MODIFICAR POR INTERFACE DE STORES
   createdAt: string;
   updatedAt: string;
 };
@@ -25,6 +28,7 @@ export const UserCardComponent: React.FC<ProductProps> = ({
   username,
   dni,
   role,
+  brand,
   storesIncludes,
   createdAt,
   updatedAt,
@@ -50,6 +54,7 @@ export const UserCardComponent: React.FC<ProductProps> = ({
             <th>Edad</th>
             <th>DNI</th>
             <th>ROL</th>
+            <th>Marca</th>
             <th>Tiendas incluidas</th>
           </tr>
         </thead>
@@ -61,25 +66,26 @@ export const UserCardComponent: React.FC<ProductProps> = ({
             <td>{age}</td>
             <td>{dni}</td>
             <td>{role}</td>
-            <td>{storesIncludes}</td>
+            <td>{brand.brandName}</td>
+            <td>
+              {storesIncludes.map((s: StoreType) => (
+                <ul>{s.storeName}</ul>
+              ))}
+            </td>
           </tr>
         </tbody>
       </table>
-
+      {/* 
       <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
         <h2>Información completa del Usuario</h2>
         <p>Id: {id}</p>
         <p>Nombre: {firstname}</p>
-        <p>Descripción: {lastname}</p>
-        <p>Precio: {username}</p>
-        <p>Largo: {age}</p>
-        <p>Talle: {dni}</p>
-        <p>Código: {role}</p>
-        <p>Categoría: {storesIncludes}</p>
+        <p>Apellido: {lastname}</p>
+        <p>Tiendas: {storesIncludes}</p>
         <p>Creado: {createdAt}</p>
         <p>Actualizado: {updatedAt}</p>
         <button onClick={closeModal}>Cerrar</button>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };

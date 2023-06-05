@@ -1,27 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { ProductType } from "../../pages/home/interfaces/product.interface";
-// import {
-//   loadProductsError,
-//   loadProductsSuccessful,
-// } from "../slices/products.slice";
-
-// export const loadProducts = createAction("data/cargarUsuarios");
-
-// export const loadProductsAsync = () => {
-//   return async (dispatch: Dispatch) => {
-//     dispatch(loadProducts());
-
-//     try {
-//       const response = await axios.get<ProductType[]>(
-//         "http://localhost:3000/usuarios"
-//       ); // Reemplaza la URL con la ruta correcta del servidor
-//       dispatch(loadProductsSuccessful(response.data));
-//     } catch (error) {
-//       dispatch(loadProductsError(error));
-//     }
-//   };
-// };
 
 export const loadProductsAction = createAsyncThunk(
   "products/getAll",
@@ -33,6 +12,21 @@ export const loadProductsAction = createAsyncThunk(
       return response.data;
     } catch (e) {
       return "Error";
+    }
+  }
+);
+
+export const createProductAction = createAsyncThunk(
+  "products/create",
+  async (newProduct: ProductType) => {
+    try {
+      const response = await axios.post<ProductType>(
+        "http://localhost:8000/api/products",
+        newProduct
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Error al crear el producto");
     }
   }
 );

@@ -35,6 +35,7 @@ export const UsersPage: React.FC<{}> = () => {
               age={u.age}
               dni={u.dni}
               role={u.role}
+              brand={u.brand}
               storesIncludes={u.storesIncludes}
               createdAt={u.createdAt}
               updatedAt={u.updatedAt}
