@@ -10,7 +10,7 @@ import { BrandsManagementPage } from "./pages/admin/brandManagement";
 import { ProductsManagementPage } from "./pages/admin/productManagement";
 import { ProductsPage } from "./pages/product";
 import LoginPage from "./pages/login";
-
+import { UsersPage } from "./pages/user";
 export const AppRouter: React.FC<{}> = () => {
   return (
     <div className="main-content">
@@ -28,6 +28,7 @@ export const AppRouter: React.FC<{}> = () => {
             element={<ProductsManagementPage />}
           />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="/users" element={<UsersPage />} />
         </Route>
       </Routes>
     </div>

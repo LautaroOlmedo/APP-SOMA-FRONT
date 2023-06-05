@@ -1,0 +1,15 @@
+.app-container {
+  display: flex;
+  height: 100%; /* Ajusta la altura como desees */
+}
+
+.sidebar {
+  flex: 0 0 25%; /* Establece el ancho fijo del sidebar al 25% */
+  background-color: #f0f0f0; /* Cambia el color de fondo según tus necesidades */
+  /* Otros estilos del sidebar */
+}
+
+.main-content {
+  flex: 0 0 75%; /* Establece el ancho fijo del contenido principal al 75% */
+  /* Otros estilos del contenido principal */
+}
