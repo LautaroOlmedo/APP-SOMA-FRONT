@@ -12,3 +12,18 @@ export const loadUsersAction = createAsyncThunk("users/getAll", async () => {
     return "Error";
   }
 });
+
+export const createUserAction = createAsyncThunk(
+  "users/create",
+  async (newUser: UserType) => {
+    try {
+      const response = await axios.post<UserType>(
+        "http://localhost:8000/api/users/register",
+        newUser
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Error al crear el usuario");
+    }
+  }
+);

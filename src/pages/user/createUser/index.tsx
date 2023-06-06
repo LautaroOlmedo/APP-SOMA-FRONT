@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { createProductAction } from "../../../redux/actions/products.actions";
+import { createUserAction } from "../../../redux/actions/users.actions";
 import { UserType } from "../../home/interfaces/user.interface";
+import { loadBrandsAction } from "../../../redux/actions/brands.actions";
+import { RootState } from "../../../redux/store";
+import { BrandType } from "../../home/interfaces/brand.interface";
 
 type errorsTYpe = {
   firstname: string;
@@ -18,6 +21,8 @@ export const useForm = (initialForm: any, validateForm: any) => {
     lastname: "",
     age: 0,
     username: "",
+    dni: "",
+    brand: "",
   });
 
   const handleChange = (e: any) => {
@@ -37,7 +42,7 @@ export const useForm = (initialForm: any, validateForm: any) => {
     setErrors(validateForm(user));
 
     if (Object.keys(errors).length === 0) {
-      dispatch(createProductAction(user) as any);
+      dispatch(createUserAction(user) as any);
       alert("VideoGame created!!");
       setUser({
         firstname: "",
@@ -70,15 +75,15 @@ export const useForm = (initialForm: any, validateForm: any) => {
   //       : alert("platform unknow");
   //   };
 
-  //   const handleChangeGender = (e) => {
-  //     e.preventDefault();
-  //     e.target.value !== "Select a genre"
-  //       ? setGame({
-  //           ...game,
-  //           genders: [...new Set([...game.genders, e.target.value])],
-  //         })
-  //       : alert("genre unknow");
-  //   };
+  // const handleChangeGender = (e) => {
+  //   e.preventDefault();
+  //   e.target.value !== "Select a genre"
+  //     ? setUser({
+  //         ...user,
+  //         genders: [...new Set([...game.genders, e.target.value])],
+  //       })
+  //     : alert("genre unknow");
+  // };
   //   const handleDeletePlatform = (el) => {
   //     setGame({
   //       ...game,
@@ -174,8 +179,17 @@ export default function CreateUser() {
     // handleDeleteGender,
   } = useForm(initialGame, validationsUser);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const history = useHistory();
+
+  useEffect(() => {
+    dispatch(loadBrandsAction() as any);
+  }, [dispatch]);
+
+  const selectIsOn = (state: RootState) => state.brandReducer;
+  const brand = useSelector(selectIsOn);
+  let allBrands = brand.brands;
+  console.log(allBrands);
 
   //   const totalPlatforms = useSelector((state) => state.platforms);
   //   const totalGenders = useSelector((state) => state.genders);
@@ -239,6 +253,28 @@ export default function CreateUser() {
         />
         {errors.username && <p style={styles}>{errors.username}</p>}
 
+        <br />
+
+        <input
+          type="text"
+          name={"dni"}
+          placeholder="DNI.."
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={user.dni}
+        />
+        {errors.dni && <p style={styles}>{errors.dni}</p>}
+
+        {/* <select className="GenderSelect" onChange={handleChangeGender}>
+          <option>Select a genre</option>
+          {allBrands &&
+            allBrands.map((g: BrandType, index: any) => (
+              <option key={index} value={g.brandName}>
+                {g.brandName}
+              </option>
+            ))}
+        </select> */}
+
         {/* <input
           type="text"
           name={"rating"}
@@ -251,15 +287,7 @@ export default function CreateUser() {
 
         <br />
 
-        <select className="GenderSelect" onChange={handleChangeGender}>
-          <option>Select a genre</option>
-          {totalGenders &&
-            totalGenders.map((g, index) => (
-              <option key={index} value={g}>
-                {g}
-              </option>
-            ))}
-        </select>
+        
         {game.genders.map((el) => (
           <div key={el}>
             <label>{el}</label>
