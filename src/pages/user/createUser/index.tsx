@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { createUserAction } from "../../../redux/actions/users.actions";
 import { UserType } from "../../home/interfaces/user.interface";
 import { loadBrandsAction } from "../../../redux/actions/brands.actions";
+import { loadStoresAction } from "../../../redux/actions/stores.actions";
 import { RootState } from "../../../redux/store";
 import { BrandType } from "../../home/interfaces/brand.interface";
+import { StoreType } from "../../home/interfaces/store.interface";
 
 type errorsTYpe = {
   firstname: string;
@@ -183,13 +185,14 @@ export default function CreateUser() {
   // const history = useHistory();
 
   useEffect(() => {
-    dispatch(loadBrandsAction() as any);
+    dispatch(loadStoresAction() as any);
   }, [dispatch]);
 
-  const selectIsOn = (state: RootState) => state.brandReducer;
-  const brand = useSelector(selectIsOn);
-  let allBrands = brand.brands;
-  console.log(allBrands);
+  //const selectIsOn = (state: RootState) => state.brandReducer;
+  const selectIsOn = (state: RootState) => state.storeReducer;
+  const store = useSelector(selectIsOn);
+  let allStores = store.stores;
+  console.log(allStores);
 
   //   const totalPlatforms = useSelector((state) => state.platforms);
   //   const totalGenders = useSelector((state) => state.genders);
@@ -265,15 +268,71 @@ export default function CreateUser() {
         />
         {errors.dni && <p style={styles}>{errors.dni}</p>}
 
-        {/* <select className="GenderSelect" onChange={handleChangeGender}>
-          <option>Select a genre</option>
-          {allBrands &&
-            allBrands.map((g: BrandType, index: any) => (
-              <option key={index} value={g.brandName}>
-                {g.brandName}
+        {/* <input
+          type="text"
+          name={"Marca"}
+          placeholder="DNI.."
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={user.brand}
+        />
+        {errors.dni && <p style={styles}>{errors.dni}</p>} */}
+
+        <select>
+          <option>Selecciona una marca</option>
+          {allStores &&
+            allStores.map((s: StoreType, index: any) => (
+              <option key={index} value={s.brand.brandName}>
+                {s.brand.brandName}
               </option>
             ))}
-        </select> */}
+        </select>
+
+        <select>
+          <option>Selecciona una tienda</option>
+          {allStores &&
+            allStores.map((s: StoreType, index: any) => (
+              <option key={index} value={s.storeName}>
+                {s.storeName}
+              </option>
+            ))}
+        </select>
+
+        <br />
+
+        <input
+          type="text"
+          name={"dni"}
+          placeholder="DNI.."
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={user.dni}
+        />
+        {errors.dni && <p style={styles}>{errors.dni}</p>}
+
+        <br />
+
+        <input
+          type="text"
+          name={"phones"}
+          placeholder="Celular.."
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={user.phones}
+        />
+        {errors.dni && <p style={styles}>{errors.dni}</p>}
+
+        <br />
+
+        <input
+          type="text"
+          name={"emails"}
+          placeholder="Email.."
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={user.emails}
+        />
+        {errors.dni && <p style={styles}>{errors.dni}</p>}
 
         {/* <input
           type="text"
