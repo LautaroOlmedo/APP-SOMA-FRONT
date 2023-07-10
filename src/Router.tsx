@@ -11,7 +11,7 @@ import { ProductsManagementPage } from "./pages/admin/productManagement";
 import { ProductsPage } from "./pages/product";
 import LoginPage from "./pages/login";
 import { UsersPage } from "./pages/user";
-import CreateUser from "./pages/user/createUser";
+import CreateUser from "./pages/admin/createUser";
 
 export const AppRouter: React.FC<{}> = () => {
   return (
@@ -24,13 +24,13 @@ export const AppRouter: React.FC<{}> = () => {
           path="/admin/panel/brands/brandManagement"
           element={<BrandsManagementPage />}
         />
+        <Route path="/admin/panel/users/createUser" element={<CreateUser />} />
         <Route
           path="/admin/panel/products/productManagement"
           element={<ProductsManagementPage />}
         />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/users" element={<UsersPage />} />
-        <Route path="/createUser" element={<CreateUser />} />
       </Route>
     </Routes>
   );
