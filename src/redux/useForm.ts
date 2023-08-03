@@ -21,10 +21,10 @@ export const useForm = (
     brand: "",
     emails: [],
     phones: [],
-    storesIncludes: [],
-    department: "",
-    province: "",
-    country: "",
+    //storesIncludes: [],
+    department: "519e68a5-6c1d-4668-8232-8d0dedad9771",
+    province: "7eb51a12-e6a1-4135-8da2-77286c025149",
+    country: "23bcb975-0dea-4b9c-b70a-819f10622b67",
     direction: "",
   });
   const [loading, setLoading] = useState(false);
