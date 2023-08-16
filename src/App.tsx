@@ -1,19 +1,41 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { Button, Container } from "@mui/material";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import React, { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { AppRouter } from "./Router";
-import { NotificationProvider } from "./context/notification.cintext";
+import { AppRouter } from "./routing/Router";
+import "./App.css";
+
+const queryClient = new QueryClient()
+
+const ReactQueryDevtoolsProduction = React.lazy(() =>
+    import("@tanstack/react-query-devtools/build/lib/index.prod.js").then(
+        (d) => ({
+            default: d.ReactQueryDevtools,
+        }),
+    ),
+)
 
 function App() {
-  return (
-    <NotificationProvider>
-      <BrowserRouter>
-        <AppRouter />
-      </BrowserRouter>
-    </NotificationProvider>
-  );
+    const [showDevtools, setShowDevtools] = useState(false)
+
+    React.useEffect(() => {
+    // @ts-ignore
+        window.toggleDevtools = () => setShowDevtools((old) => !old)
+    }, [])
+  
+    return (
+        <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+                <AppRouter />
+            </BrowserRouter>
+            <ReactQueryDevtools initialIsOpen />
+            {showDevtools && (
+                <React.Suspense fallback={null}>
+                    <ReactQueryDevtoolsProduction />
+                </React.Suspense>
+            )}
+        </QueryClientProvider>
+    );
 }
 
 export default App;

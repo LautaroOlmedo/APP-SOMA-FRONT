@@ -1,0 +1,172 @@
+.container.loading {
+  position: relative;
+}
+
+.loading-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+}
+
+.loading-image {
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-column {
+  flex: 35%;
+  background-color: #124069;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.left-column h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+}
+
+.left-column p {
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+}
+
+.right-column {
+  flex: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  text-align: center;
+  margin-bottom: 2rem; /* Espacio adicional entre el formulario y el botón */
+}
+
+.form h2 {
+  margin-bottom: 1.5rem; /* Mayor espacio entre el título y los campos de entrada */
+  font-size: 2rem; /* Tamaño de fuente más grande para el título */
+  color: #ffffff; /* Color de texto personalizado */
+}
+
+.form input {
+  margin-bottom: 1.5rem; /* Mayor espacio entre los campos de entrada */
+  padding: 0.5rem; /* Mayor relleno para un aspecto más moderno */
+  border-radius: 5px; /* Bordes más suaves */
+  border: 1px solid #ddd; /* Borde sutil */
+  font-size: 1.2rem; /* Tamaño de fuente ligeramente más grande */
+  color: #555; /* Color de texto personalizado */
+}
+
+.forgot-password {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 1rem; /* Ajusta el tamaño del texto a tu preferencia */
+}
+
+.form button {
+  display: inline-block;
+  padding: 0.8rem 4.5rem; /* Ajusta el tamaño del botón a tu preferencia */
+  background-color: #de9fb2;
+  color: azure;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.form button:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.right-column-image {
+  max-width: 100%; /* Establece un ancho máximo del 100% */
+  max-height: 100%; /* Establece una altura máxima del 100% */
+  width: auto; /* Ajusta automáticamente el ancho para mantener la proporción */
+  height: auto; /* Ajusta automáticamente la altura para mantener la proporción */
+  margin-top: 2rem;
+}
+.social-media {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.social-media p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.social-icons a {
+  margin: 0 0.5rem;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+}
+
+@media screen and (max-width: 767px) {
+  .loading-image {
+    object-fit: cover;
+  }
+
+  .container {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start; /* Alinea la columna izquierda en la parte superior del contenedor */
+  }
+
+  .left-column,
+  .right-column {
+    flex: none;
+    width: 100%;
+  }
+
+  .right-column {
+    display: none;
+    margin-top: 2rem;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .forgot-password {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .form button {
+    padding: 1rem 1.5rem;
+  }
+}

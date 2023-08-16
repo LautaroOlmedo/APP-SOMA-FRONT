@@ -1,45 +1,53 @@
 import React from "react";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Divider,
-  Typography,
-} from "@mui/material";
+import { StoreType } from "../../interfaces/store.interface";
+import { IUser } from "../../interfaces/user.interface";
 
-type CardsProp = {
+type BrandsProp = {
+  brandName: string;
+  webSite: string;
   image: string;
-  name: string;
-  species: string;
-  status: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  users: IUser[];
+  stores: StoreType[];
 };
 
-export const CardComponent: React.FC<CardsProp> = ({
-  image,
-  name,
-  species,
-  status,
+export const BrandCartComponent: React.FC<BrandsProp> = ({
+    brandName,
+    webSite,
+    image,
+    id,
+    createdAt,
+    updatedAt,
 }) => {
-  return (
-    <Card>
-      <CardMedia component="img" height="194" image={image} alt="Paella dish" />
-      <CardContent>
-        <Typography variant="h4" sx={{ mb: 1.5 }}>
-          {name}
-        </Typography>
-        <Divider />
-        <Typography sx={{ mt: 1.5 }}>Especie: {species}</Typography>
-        <Typography sx={{ mt: 1.5 }}>Estado: {status}</Typography>
-      </CardContent>
-      <CardContent>
-        <CardActions disableSpacing>
-          <Button fullWidth variant="contained" size="small">
-            Learn Moore
-          </Button>
-        </CardActions>
-      </CardContent>
-    </Card>
-  );
+    return (
+        <div>
+            <ul>
+                <li>
+          Id: {id} <br /> <br />
+          Nombre: {brandName} <br /> <br />
+          Sitio Web: {webSite} <br /> <br />
+          imagen: {image} <br /> <br />
+          Nombre: {brandName} <br /> <br />
+          creado: {createdAt}
+                    <br /> <br />
+          actualizado: {updatedAt}
+                    <br /> <br />
+                    {/* Usuarios:{" "} // REALMENTE HAY QUE PONER LOS USUARIOS Y TIENDAS? YA QUE LA IDEA ES ADMINISTRAR MARCAS
+          {users
+            ? users?.map((user) => (
+                <ul>
+                  <li>
+                    Nombre: {user.lastname}
+                    Apellido: {user.firstname}
+                  </li>
+                </ul>
+              ))
+            : "No se encontraron usuarios"}
+          Tiendas: {stores} */}
+                </li>
+            </ul>
+        </div>
+    );
 };

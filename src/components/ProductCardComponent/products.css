@@ -1,0 +1,107 @@
+.product-table-container {
+  width: 100%;
+  overflow-x: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5%;
+}
+
+.product-table {
+  width: max-content;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
+
+.product-table th,
+.product-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.product-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.product-table td {
+  vertical-align: middle;
+}
+
+.product-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.product-table tbody tr:hover {
+  background-color: #e6e6e6;
+}
+
+/* Modal Styles */
+.ReactModal__Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ReactModal__Content {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ReactModal__Content h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.ReactModal__Content p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.ReactModal__Content .modal-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.ReactModal__Content .modal-column {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.ReactModal__Content button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #c42a2a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.ReactModal__Content button:hover {
+  background-color: #c42a2a;
+}
