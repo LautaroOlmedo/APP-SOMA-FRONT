@@ -182,16 +182,6 @@ export default function CreateUser() {
               ))}
           </select>
 
-          {/* <select onChange={handleChangeStore}>
-            <option>Seleccione una tienda</option>
-            {allStores &&
-              allStores.map((s: StoreType, index: number) => (
-                <option key={index} value={s.storeName}>
-                  {s.storeName}
-                </option>
-              ))}
-          </select> */}
-
           <input type="submit" value={"Enviar"} />
         </form>
       </div>
