@@ -1,19 +1,11 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import { NavBar } from "../components/NavBar";
-import Sidebar from "../components/Sidebar";
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 
-export const RouterLayout: React.FC<{}> = () => {
+export const RouterLayout = () => {
     return (
         <>
-            <div style={{ position: "relative" }}>
-                <NavBar />
+            <div style={{ position: 'relative' }}>
                 <Outlet />
-            </div>
-
-            <div className="yugoslavia">
-                <NavBar />
-                <Sidebar />
             </div>
         </>
     );
