@@ -1,51 +1,46 @@
-import React, { useEffect } from "react";
+import React from 'react';
+import { useGetAllUsers } from '../../api/user/useGetAllUsers';
+import { UserCardComponent } from '../../components/UserCradComponent';
 
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import { loadUsersAction } from "../../redux/actions/users.actions";
-import { UserType } from "../home/interfaces/user.interface";
-import { UserCardComponent } from "../../components/UserCradComponent";
+const UsersPage = () => {
+    const allUsers = useGetAllUsers()
 
-export const UsersPage: React.FC<{}> = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadUsersAction() as any);
-  }, [dispatch]);
+    if(allUsers.isLoading) return <>Cargando..</>
 
-  const selectIsOn = (state: RootState) => state.user;
-  const user = useSelector(selectIsOn);
-  let allUsers = user.users;
-  console.log(allUsers);
-  return (
-    <div>
-      {/* <Sidebar /> */}
+    if(allUsers.isError) return <>Error</>
 
-      <br />
-      <br />
-      <br />
-      <div>
-        {allUsers?.length !== 0 ? (
-          allUsers?.map((u: UserType) => (
-            <UserCardComponent // Ajusta el nombre del componente
-              key={u.id}
-              id={u.id}
-              firstname={u.firstname}
-              lastname={u.lastname}
-              username={u.username}
-              age={u.age}
-              dni={u.dni}
-              role={u.role}
-              brand={u.brand}
-              storesIncludes={u.storesIncludes}
-              createdAt={u.createdAt}
-              updatedAt={u.updatedAt}
-              password={""}
-            />
-          ))
-        ) : (
-          <div>No hay resultados</div>
-        )}
-      </div>
-    </div>
-  );
+    if(allUsers.data.length === 0) return <>No hay resultados</>
+
+    return (
+        <div>
+            {/* <Sidebar /> */}
+
+            <br />
+            <br />
+            <br />
+            <div>
+                {
+                    allUsers.data.map(u => (
+                        <UserCardComponent // Ajusta el nombre del componente
+                            key={u.id}
+                            id={u.id}
+                            firstname={u.firstname}
+                            lastname={u.lastname}
+                            username={u.username}
+                            age={u.age}
+                            dni={u.dni}
+                            role={u.role}
+                            brand={u.brand}
+                            storesIncludes={u.storesIncludes}
+                            createdAt={u.createdAt}
+                            updatedAt={u.updatedAt}
+                            password={''}
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    );
 };
+
+export default UsersPage
