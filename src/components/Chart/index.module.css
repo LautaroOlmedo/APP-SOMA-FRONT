@@ -1,0 +1,41 @@
+.tooltip{
+    border-radius: 0.25rem;
+    background-color: #ffffff;
+    color: rgb(90, 90, 90);
+    padding: 0.2rem 1.2rem;
+    box-shadow: 5px 5px 15px 0px rgba(94, 94, 94, 0.5);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tooltipTitle{
+    font-size: 18px;
+}
+.descriptionTooltip{
+    color: #4124b7;
+}
+
+.chartContainer{
+    grid-area: graphic;
+    background-color: #ffffff;
+    padding: 28px 28px 28px 0px;
+    border-radius: 24px;
+    width: 100%;
+}
+
+.badgeSection{
+    background-color: rgb(224, 235, 233);
+    width: max-content;
+    border-radius: 18px;
+    padding: 4px 12px;
+    font-size: 16px;
+    margin-left: 32px;
+    margin-bottom: 32px;
+}
+
+.badgeColorTitle{
+    color: rgb(117, 189, 210);
+    font-weight: bold;
+}

@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { RouteHeading } from "../../../components/RouteHeading/RouteHeading";
 
 const AdminPanelPage = () => {
     return (
         <div>
+            <RouteHeading />
             <div>PANEL DEL ADMINISTRADOR</div>
             <div>
                 <Link to={"/admin/panel/brands/brandManagement"}>

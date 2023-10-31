@@ -5,8 +5,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import PrivateRoute from './PrivateRoute';
 import { RouterLayout } from './RouterLayout';
-import { HomePage } from '../pages/home';
-import LoginPage from '../pages/login';
+import { HomePage } from '../pages/dashboard';
+//import LoginPage from '../pages/login';
 
 const AdminPanelPage = lazy(() => import('../pages/admin/panel'));
 const BrandsManagementPage = lazy(
@@ -29,7 +29,11 @@ export const AppRouter = () => {
                 />
                 <Route 
                     path="/login" 
-                    element={<LoginPage />} 
+                    element={<HomePage />} 
+                />
+                <Route 
+                    path="/login/page" 
+                    element={<HomePage />} 
                 />
                 <Route
                     path="/admin/panel"
