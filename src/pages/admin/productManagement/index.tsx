@@ -2,16 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGetAllProducts } from '../../../api/product/useGetAllProducts';
 import { ProductCartComponent } from '../../../components/ProductCardComponent';
+import { Loader } from '../../../components/Loader/Loader';
 
 const ProductsManagementPage = () => {
     const allProducts = useGetAllProducts()
 
-    if(allProducts.isLoading) return <>CARGANDO...</>
+    if(allProducts.isLoading) return <Loader text='Cargando productos...' />
 
     if(allProducts.isError) return <>ERROR</>
 
     if(allProducts.data.length === 0) return <>No hay resultados</>
-
+   
     return (
         <div>
             <div>

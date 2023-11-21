@@ -6,9 +6,10 @@ import { DashboardTable } from '../../components/DashboardTable/DashboardTable';
 import { ProfileBadge } from '../../components/ProfileBadge/ProfileBadge';
 import { RapidAccessCard } from '../../components/RapidAccessCard/RapidAccessCard';
 import { RouteHeading } from '../../components/RouteHeading/RouteHeading';
+import { WelcomeImage } from '../../components/WelcomeImage/WelcomeImage';
 // import { Table } from '../../components/Table';
 
-export const HomePage = () => {
+const HomePage = () => {
     // const data = [
     //     {
     //         id: '1',
@@ -47,6 +48,7 @@ export const HomePage = () => {
     //         accessorKey: 'tel' as const
     //     }
     // ]
+    
     const dataChart = [
         {
             date: 0,
@@ -128,7 +130,7 @@ export const HomePage = () => {
             'from': 'Babbleset',
             'to': 'Gardie Waycot',
             'amount': 1375,
-            'status': 'partial'
+            'status': 'partial' as const
         },
         {
             'id': 2,
@@ -136,7 +138,7 @@ export const HomePage = () => {
             'from': 'Skippad',
             'to': 'Tammy Hulme',
             'amount': 7266,
-            'status': 'pending'
+            'status': 'pending' as const
         },
         {
             'id': 3,
@@ -144,7 +146,7 @@ export const HomePage = () => {
             'from': 'Eadel',
             'to': 'Chloris Briscam',
             'amount': 9362,
-            'status': 'partial'
+            'status': 'partial' as const
         },
         {
             'id': 4,
@@ -152,7 +154,7 @@ export const HomePage = () => {
             'from': 'Meejo',
             'to': 'Hilarius Cammack',
             'amount': 1614,
-            'status': 'partial'
+            'status': 'partial' as const 
         },
         {
             'id': 5,
@@ -160,7 +162,7 @@ export const HomePage = () => {
             'from': 'InnoZ',
             'to': 'Jeannine Conachy',
             'amount': 654,
-            'status': 'pending'
+            'status': 'pending' as const
         },
         {
             'id': 6,
@@ -168,7 +170,7 @@ export const HomePage = () => {
             'from': 'Jabberstorm',
             'to': 'Meryl Napoleone',
             'amount': 2304,
-            'status': 'partial'
+            'status': 'partial' as const 
         },
         {
             'id': 7,
@@ -176,7 +178,7 @@ export const HomePage = () => {
             'from': 'Voonder',
             'to': 'Kingsly Gayther',
             'amount': 2829,
-            'status': 'pending'
+            'status': 'pending' as const
         },
         {
             'id': 8,
@@ -184,7 +186,7 @@ export const HomePage = () => {
             'from': 'Vipe',
             'to': 'Kaleena Martinetto',
             'amount': 5843,
-            'status': 'partial'
+            'status': 'partial' as const 
         },
         {
             'id': 9,
@@ -192,7 +194,7 @@ export const HomePage = () => {
             'from': 'Mudo',
             'to': 'Elinor Daveridge',
             'amount': 1446,
-            'status': 'done'
+            'status': 'done' as const
         },
         {
             'id': 10,
@@ -200,7 +202,7 @@ export const HomePage = () => {
             'from': 'Zoomzone',
             'to': 'Dewain Ianinotti',
             'amount': 4837,
-            'status': 'pending'
+            'status': 'pending' as const
         },
         {
             'id': 11,
@@ -208,7 +210,7 @@ export const HomePage = () => {
             'from': 'Zoomcast',
             'to': 'Mort Stillwell',
             'amount': 7556,
-            'status': 'done'
+            'status': 'done' as const
         },
         {
             'id': 12,
@@ -216,7 +218,7 @@ export const HomePage = () => {
             'from': 'Voolith',
             'to': 'Guillemette Braam',
             'amount': 5610,
-            'status': 'partial'
+            'status': 'partial' as const
         },
         {
             'id': 13,
@@ -224,7 +226,7 @@ export const HomePage = () => {
             'from': 'Talane',
             'to': 'Edgard Ramme',
             'amount': 6374,
-            'status': 'done'
+            'status': 'done' as const
         },
     ]
 
@@ -233,6 +235,7 @@ export const HomePage = () => {
             {/* <Table<{id:string, email:string, name:string, tel:string}> data={data} columns={columns} /> */}
             <RouteHeading />
             <ProfileBadge />
+            <WelcomeImage />
             <CalendarCard />
             <div className={style.accessContainer}>
                 {rapidAccesCard.map(dataAccessCard => <RapidAccessCard key={dataAccessCard.title} {...dataAccessCard}/>)}
@@ -242,5 +245,7 @@ export const HomePage = () => {
         </div>
     )
 }
+
+export default HomePage
 
 

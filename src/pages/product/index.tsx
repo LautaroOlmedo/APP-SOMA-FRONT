@@ -1,11 +1,12 @@
 import React from 'react';
 import { useGetAllProducts } from '../../api/product/useGetAllProducts';
 import { ProductCartComponent } from '../../components/ProductCardComponent'; 
+import { Loader } from '../../components/Loader/Loader';
 
 const ProductsPage = () => {
     const products = useGetAllProducts()
 
-    if(products.isLoading) return <>CARGANDO...</>
+    if(products.isLoading) return <Loader text='Cargando productos...' />
 
     if(products.isError) return <>ERROR</>
 

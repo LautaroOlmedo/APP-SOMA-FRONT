@@ -1,11 +1,16 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { SetStateAction, Dispatch} from 'react';
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { CiCalendar } from 'react-icons/ci'
 import { GoChevronRight } from 'react-icons/go'
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import style from './index.module.css';
+import { useUserData } from '../../api/user/useGetUserById';
 
 export const SidebarTest = ({closeSidebar, setCloseSidebar}: {closeSidebar: boolean, setCloseSidebar: Dispatch<SetStateAction<boolean>>}) =>{
+    const userData = useUserData()
+
+    console.log('userData', userData.data)
+
 
     return (
         <div className={style.sidebarContainer}>
@@ -37,12 +42,15 @@ export const SidebarTest = ({closeSidebar, setCloseSidebar}: {closeSidebar: bool
                         }
                     }
                 }}>
-                    <MenuItem icon={<CiCalendar/>} className={style.menuItem} itemType='s'>NOMBRE TIENDA</MenuItem>
-                    {!closeSidebar && <MenuItem className={style.menuItem} itemType='s'><b>GENERAL</b></MenuItem>}
-                    <SubMenu label="Tiendas" icon={<CiCalendar/>}>
+                    <MenuItem icon={<div className={style.imgContainer}>
+                        {userData.data?.brand?.image && <img className={style.img} src={userData.data.brand.image} alt='logo marca'/>}
+                    </div>} className={style.menuItem} itemType='s'>{userData.data?.brand?.brandName}</MenuItem>
+                
+                    <SubMenu label="TIENDAS" icon={<CiCalendar/>}>
                         <MenuItem icon={<CiCalendar/>} className={style.menuItem}>Godoy Cruz</MenuItem>
                         <MenuItem icon={<CiCalendar/>} className={style.menuItem}>Ciudad</MenuItem>
                     </SubMenu>
+                    {!closeSidebar && <MenuItem className={style.menuItem} itemType='s'><b>GENERAL</b></MenuItem>}
                     <MenuItem icon={<CiCalendar/>} className={style.menuItem}>Finanzas</MenuItem>
                     <MenuItem icon={<CiCalendar/>} className={style.menuItem}>Productos</MenuItem>
                     <MenuItem icon={<CiCalendar/>} className={style.menuItem}>Billeteras</MenuItem>
