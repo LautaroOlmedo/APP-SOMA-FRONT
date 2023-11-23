@@ -1,0 +1,29 @@
+.cardDay{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.days{
+    padding: 1px 12px;
+    font-weight: bolder;
+    border-radius: 12px;
+}
+
+.selected{
+    background-color: #FBF5DB;
+}
+
+.yellow{
+    color: #E9C121;
+}
+
+.point{
+    min-width: 12px;
+    min-height: 12px;
+    max-width: 12px;
+    max-height: 12px;
+    background-color: #E9C121;
+    border-radius: 50%;
+}

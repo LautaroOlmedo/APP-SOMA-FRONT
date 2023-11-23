@@ -1,7 +1,9 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, FormEvent, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import style from './index.module.css'
 import { useLogin } from '../../api/auth/useLogin';
-import './Login css/login.css';
+import background from '../../assets/background.png'
+import { Loader } from '../../components/Loader/Loader';
 
 const LoginPage = () => {
     const navigate = useNavigate()
@@ -9,23 +11,23 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const login = useLogin()
 
-    console.log('LOGIN STATUS', login.status)
-    if(login.isLoading) return <>Cargando...</>
+    if(login.isLoading) return <Loader text='Cargando...' />
 
     if(login.isError){
-        if(login.error.status === 401){
-            alert('Usuario invalido')
-        }
+        // if(login.error.status === 401){
+        //     alert('Usuario invalido')
+        // }
         alert('Error normal')
         login.reset()
     }
 
     if(login.isSuccess){
-        const accesToken = login.data.data.accesToken
+        const accesToken = login.data.accessToken
         if(accesToken){ 
             localStorage.setItem('token', accesToken)
+            localStorage.setItem('user', JSON.stringify(login.data.user))
             login.reset()
-            navigate('/admin/panel')
+            navigate('/home')
         }
     }
 
@@ -43,53 +45,32 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="container">
-            <>
-                <div className="left-column">
-                    <h1>SOMA EMPRENDE</h1>
-                    <p>Una nueva forma de organizar tu negocio</p>
-                    <form className="form" onSubmit={handleSubmit}>
-                        <h2>Iniciar sesión</h2>
-                        <input
-                            type="text"
-                            name="username"
-                            placeholder="Correo electronico"
-                            value={username}
-                            onChange={handleUsernameChange}
-                        />
-                        <br />
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Contraseña"
-                            value={password}
-                            onChange={handlePasswordChange}
-                        />
-                        <br />
-                        <p className="forgot-password">¿Perdiste tu contraseña?</p>
-                        <button type="submit">Acceder</button>
-                    </form>
-
-                    <div className="social-media">
-                        <p>Síguenos en las redes sociales:</p>
-                        <div className="social-icons">
-                            {/* Aquí puedes agregar los logos de las redes sociales */}
-                            <a href="www">
-                                <img src="facebook.png" alt="Facebook" />
-                            </a>
-                            <a href="www">
-                                <img src="instagram.png" alt="Instagram" />
-                            </a>
-                            <a href="www">
-                                <img src="twitter.png" alt="Twitter" />
-                            </a>
-                        </div>
+        <div className={style.containerLogin}>
+            <div className={style.formContainer}>
+                <img src={background} alt='img de fondo'/>
+                <div className={style.content}>
+                    <div className={style.flexCenter}>
+                        <span className={style.firstTitle}>APLICACIÓN DE GESTIÓN</span>
+                        <h3 className={style.secondTitle}>SOMA EMPRENDE</h3>
                     </div>
+                    <div className={style.flexCenter}>
+                        <span className={style.thirdTitle}>Ingresar</span>
+                        <form onSubmit={handleSubmit} className={style.form}>
+                            <div className={style.inputContainer}>
+                                {<span className={username ? style.label : style.labelCollapse}>CORREO</span>}
+                                <input className={style.input} type='text' onChange={handleUsernameChange} placeholder='CORREO'/>
+                            </div>
+                            <div className={style.inputContainer}>
+                                {<span className={password ? style.label : style.labelCollapse}>CONTRASEÑA</span>}
+                                <input className={style.input} type='password' onChange={handlePasswordChange} placeholder='CONTRASEÑA'/>
+                            </div>
+                            <input className={style.submitBtn} type='submit' value='INICIAR SESIÓN'/>
+                        </form>
+                        <span className={style.help}>¿No podés iniciar sesión? <b>Contactanos</b></span>
+                    </div>
+                    
                 </div>
-                <div className="right-column">
-                    <img src="login.png" alt="Imagen" className="right-column-image" />
-                </div>
-            </>
+            </div>
         </div>
     );
 };

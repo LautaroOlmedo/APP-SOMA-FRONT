@@ -1,11 +1,12 @@
 import React from 'react';
 import { useGetAllUsers } from '../../api/user/useGetAllUsers';
 import { UserCardComponent } from '../../components/UserCradComponent';
+import { Loader } from '../../components/Loader/Loader';
 
 const UsersPage = () => {
     const allUsers = useGetAllUsers()
 
-    if(allUsers.isLoading) return <>Cargando..</>
+    if(allUsers.isLoading) return <Loader text='Cargando usuarios...' />
 
     if(allUsers.isError) return <>Error</>
 

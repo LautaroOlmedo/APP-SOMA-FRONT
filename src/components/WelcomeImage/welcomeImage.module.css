@@ -1,0 +1,32 @@
+.imgContainer{
+    position: relative;
+    grid-area: welcome;
+    height: 137px;
+    width: 100%;
+}
+
+.backgrounContainer{
+    overflow: hidden;
+    border-radius: 8px;
+    height: 100%;
+    width: 100%;
+}
+
+.imgBackground{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.nara{
+    position: absolute;
+    z-index: 99999;
+    top: -43px;
+    right: 5%;
+    height: 180px;
+}
+
+.naraImg{
+    width: 100%;
+    height: 100%;
+}

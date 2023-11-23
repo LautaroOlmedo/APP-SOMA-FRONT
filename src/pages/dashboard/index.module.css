@@ -1,0 +1,20 @@
+.container{
+    display: grid;
+    grid-template-rows: auto auto auto 400px;
+    grid-template-columns: 1fr 1fr 1fr 1.5fr;
+    gap: 24px 10px; /* Espacio entre celdas */
+    grid-template-areas:
+    "route . . badge"
+    "welcome welcome welcome calendar"
+    "access access access access"
+    "graphic graphic table table";
+    max-height: calc(100vh - 64px);
+}
+
+.accessContainer{
+    grid-area: access;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+}

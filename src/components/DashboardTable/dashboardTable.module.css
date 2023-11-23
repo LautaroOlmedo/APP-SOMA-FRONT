@@ -1,0 +1,162 @@
+
+.containerTable{
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    grid-area: table;
+    overflow-y: hidden;
+    border-radius: 8px;
+}
+
+.header{
+    padding: 4px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: #113E67;
+    font-weight: 500;
+}
+
+.bodyTable{
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 100px;
+}
+
+.bodyTable::-webkit-scrollbar {
+    width: 8px;
+}
+
+.bodyTable::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: rgb(243, 237, 237);
+}
+
+.bodyTable::-webkit-scrollbar-thumb {
+    background-color: #BCD0DE;
+}
+
+.transactionContainer{
+    outline: none;
+    border: none;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    padding: 8px 8px;
+}
+
+.transactionContainer:hover{
+    background-color: #F2F8FD;
+    cursor: pointer;
+}
+
+.selectedCard{
+    background-color: #F2F8FD;
+}
+
+.firstSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: max-content;
+    gap: 8px;
+}
+
+.secondSection{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    width: 100%;
+    font-size: 12px;
+}
+
+.transactionPrincipal{
+    display: flex;
+    flex-direction: column;
+}
+
+.dateTransaction{
+    font-size: 12px;
+}
+
+.moreInfoText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0A1A29;
+    gap: 3px;
+}
+
+.moreInfoText:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.searcherContainer{
+    display: flex;
+    gap: 6px;
+}
+
+.iconContainer{
+    width: 24px;
+    background-color: #F4F4F4;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconContainer:hover{
+    cursor: pointer;
+}
+
+.seatcherInput{
+    outline: none;
+    width: 100px;
+    background-color: #F4F4F4;
+    border: none;
+    border-radius: 12px;
+    font-size: 12px;
+    padding: 0 12px;
+}
+
+.filterContainer{
+    padding: 2px 6px;
+    background-color: #F4F4F4;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: regular;
+    gap: 4px;
+}
+
+.dateTransaction{
+    font-size: 12px;
+    color: #BDBDBD;
+}
+
+.from{
+    font-size: 12px;
+    color: #BDBDBD;
+}
+
+.to{
+    font-size: 12px;
+    color: #BDBDBD;
+}
+
+.amount{
+    font-weight: bold;
+    font-size: 14px;
+    color: #113E67;
+}
+
+.titleTransaction{
+    color: #0A1A29;
+    font-weight: 500;
+}
