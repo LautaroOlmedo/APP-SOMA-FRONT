@@ -1,0 +1,29 @@
+.toggle {
+	position: relative;
+	width: 50px;
+	height: 25px;
+	background-color: #ccc;
+	border-radius: 25px;
+	cursor: pointer;
+  }
+  
+  .toggle::before {
+	content: '';
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	width: 23px;
+	height: 23px;
+	border-radius: 50%;
+	background-color: white;
+	transition: transform 0.3s ease;
+  }
+  
+  .toggle.active:before {
+	transform: translateX(25px);
+  }
+  
+  .toggle.active {
+	background-color: #b53029; /* Color cuando está activado */
+  }
+  

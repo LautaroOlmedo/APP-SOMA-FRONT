@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import style from "./index.module.css";
+import { columnasVentas } from "../../utils/ColumnsTable/columnasVentas";
 import DataTable from "react-data-table-component";
-import { columnasVentas } from "../../../utils/ColumnsTable/columnasVentas";
 const Ventas = () => {
   const [expandSearch, setExpandSearch] = useState(false);
 
@@ -36,7 +36,7 @@ const Ventas = () => {
   }
   return (
     <div className={style.container}>
-      <h1 style={{ fontFamily: "Poppins", fontSize: "17.8px" }}>Productos</h1>
+      <h1 style={{ fontFamily: "Poppins", fontSize: "17.8px" }}>Ventas</h1>
 
       <div className={style.searchAndButtonContainer}>
         <div className={expandSearch ? style.expandedSearch : style.searchBar}>
@@ -61,13 +61,14 @@ const Ventas = () => {
         </div>
       </div>
 
-      <DataTable
+      {/* <DataTable
         columns={columnasVentas}
         // data={allProducts}
         noDataComponent="Sin datos aún..."
         pagination
         onSelectedRowsChange={handleChange}
-        clearSelectedRows={toggledClearRows} data={[]}      />
+        clearSelectedRows={toggledClearRows}
+      /> */}
     </div>
   );
 };

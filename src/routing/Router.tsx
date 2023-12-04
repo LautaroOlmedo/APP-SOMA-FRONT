@@ -16,6 +16,7 @@ const ProductsManagementPage = lazy(
     () => import('../pages/admin/productManagement')
 );
 const ProductsPage = lazy(() => import('../pages/product'));
+const WalletPage = lazy(() => import('../pages/admin/wallet'));
 const UsersPage = lazy(() => import('../pages/user'));
 
 export const AppRouter = () => {
@@ -53,6 +54,10 @@ export const AppRouter = () => {
                 <Route
                     path="/products"
                     element={<PrivateRoute element={ProductsPage} />}
+                />
+                <Route
+                    path="/admin/panel/wallet/walletManagement"
+                    element={<PrivateRoute element={WalletPage} />}
                 />
                 <Route 
                     path="/users" 

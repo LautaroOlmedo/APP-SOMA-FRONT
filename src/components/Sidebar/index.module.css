@@ -40,8 +40,9 @@
 
 .sidebarFooter{
     padding: 8px;
-    width: 220px;
-    height: 230px;
+    margin-top: 40px;
+    width: 200px;
+    height: 180px;
     background-color: #113E67;
     border-radius: 8px;
     position: absolute;
