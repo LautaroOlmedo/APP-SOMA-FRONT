@@ -5,9 +5,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import PrivateRoute from './PrivateRoute';
 import { RouterLayout } from './RouterLayout';
-import { HomePage } from '../pages/home';
 import LoginPage from '../pages/login';
-
+const HomePage = lazy(() => import('../pages/dashboard'))
 const AdminPanelPage = lazy(() => import('../pages/admin/panel'));
 const BrandsManagementPage = lazy(
     () => import('../pages/admin/brandManagement')
@@ -17,6 +16,7 @@ const ProductsManagementPage = lazy(
     () => import('../pages/admin/productManagement')
 );
 const ProductsPage = lazy(() => import('../pages/product'));
+const WalletPage = lazy(() => import('../pages/admin/wallet'));
 const UsersPage = lazy(() => import('../pages/user'));
 
 export const AppRouter = () => {
@@ -25,11 +25,15 @@ export const AppRouter = () => {
             <Route element={<RouterLayout />}>
                 <Route 
                     path="/" 
-                    element={<HomePage />} 
+                    element={<LoginPage />} 
                 />
                 <Route 
                     path="/login" 
                     element={<LoginPage />} 
+                />
+                <Route 
+                    path='/home'
+                    element={<PrivateRoute element={HomePage} />}
                 />
                 <Route
                     path="/admin/panel"
@@ -50,6 +54,10 @@ export const AppRouter = () => {
                 <Route
                     path="/products"
                     element={<PrivateRoute element={ProductsPage} />}
+                />
+                <Route
+                    path="/admin/panel/wallet/walletManagement"
+                    element={<PrivateRoute element={WalletPage} />}
                 />
                 <Route 
                     path="/users" 

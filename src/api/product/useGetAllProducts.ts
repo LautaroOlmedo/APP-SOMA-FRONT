@@ -13,6 +13,6 @@ export const useGetAllProducts = (options?: Options) => useQuery<AxiosResponse<I
     getProducts,
     {
         ...options,
-        select: data => data.data
+        select: data => data.data,
     }
 )

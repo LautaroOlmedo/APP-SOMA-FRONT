@@ -1,0 +1,39 @@
+.cardContainer{
+    grid-area: calendar;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.cardHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.cardGoogle{
+    padding: 4px 12px;
+    background-color: #D8E9F4;
+    color: #113E67;
+    border-radius: 18px;
+}
+
+.cardGoogle:hover{
+    background-color: #aad2ec;
+    cursor: pointer;
+}
+
+.cardTitle{
+    text-transform: capitalize;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.weekContainer{
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    justify-content: space-between;
+}

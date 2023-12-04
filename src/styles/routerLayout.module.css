@@ -1,0 +1,18 @@
+.rootLayout{
+    height: 100vh;
+    position: relative;
+}
+
+.largeRoot{
+    margin-left: 120px;
+    padding: 32px;
+    transition: margin-left 0.4s;
+    overflow-y: scroll;
+}
+
+.smallRoot{
+    margin-left: 290px;
+    padding: 32px;
+    transition: margin-left 0.4s;
+    overflow-y: scroll;
+}

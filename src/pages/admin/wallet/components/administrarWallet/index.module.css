@@ -1,0 +1,90 @@
+.dashed-button {
+	position: relative;
+	padding: 10px 20px;
+	background-color: transparent;
+	color: #000;
+	border: none;
+	font-size: 20px; /* Cambio en el tamaño de la fuente */
+	cursor: pointer;
+	outline: none;
+	border-style: dashed;
+	border-width: 2px;
+	border-color: #97b5ca;
+	border-radius: 15px; /* Agregar esquinas circulares */
+	width: calc(100% - 20%);
+	height: calc(100vh - 20%);
+	margin-left: 55px;
+  }
+
+  .nombreInput {
+	border: none; /* Quita el borde del input text */
+  }
+  
+  .uploadIconContainer {
+	border: 2px dashed #97b5ca; /* Agrega el borde como el botón + Agregar billetera */
+	border-radius: 15px; /* Establece esquinas circulares */
+	width: 40px; /* Ajusta el ancho del contenedor del icono */
+	height: 40px; /* Ajusta la altura del contenedor del icono */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 10px; /* Espaciado derecho */
+	cursor: pointer;
+  }
+
+  .cardsContainer {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 50px;
+	gap: 20px;
+	justify-content: center;
+  }
+  
+  .card {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	width: 400px; /* Ancho total de la tarjeta */
+	margin-bottom: 20px; /* Espacio entre las tarjetas */
+	background-color: white; /* Fondo blanco */
+  }
+  
+  .cardDetails {
+	display: flex;
+	align-items: center;
+	width: calc(100% - 50px); /* Ajusta el ancho para el espacio del icono */
+  }
+  
+  .cardImage {
+	width: 50px; /* Ancho del logo ajustable */
+	height: 50px; /* Alto del logo ajustable */
+	object-fit: cover;
+	margin-right: 10px; /* Espacio entre el logo y los detalles */
+  }
+  
+  .cardInfo {
+	flex-grow: 1;
+	 /* Para ocupar el espacio restante */
+  }
+  
+  .iconOuterContainer {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	justify-content: flex-end; /* Alinea el contenedor del icono a la derecha */
+	width: 50px; /* Ancho del contenedor del icono */
+	height: 100%; /* Altura del contenedor del icono */
+  }
+  
+  .iconContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px; /* Ancho del contenedor del icono interno */
+	height: 40px; /* Altura del contenedor del icono interno */
+	background-color: #f0f0f0; /* Color de fondo del contenedor del icono */
+	border-radius: 50%; /* Forma circular */
+  }
+  

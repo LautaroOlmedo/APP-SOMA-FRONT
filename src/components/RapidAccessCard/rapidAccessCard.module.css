@@ -1,0 +1,42 @@
+.cardContainer{
+    background-color: white;
+    width: 100%;
+    padding: 4px 18px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+}
+
+.cardHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    letter-spacing: 2.5px;
+    font-size: 16px;
+}
+
+.cardTitle{
+    text-transform: uppercase;
+}
+
+.cardIconContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardValue{
+    font-size: 20px;
+}
+
+.red{
+    color: #F54D4B
+}
+
+.green{
+    color: #37CFAC
+}
+
+.cardYesterday{
+    color: black;
+}

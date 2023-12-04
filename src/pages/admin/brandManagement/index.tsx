@@ -1,11 +1,12 @@
 import React from "react";
 import { useGetAllBrands } from "../../../api/brand/getAllBrands";
 import { BrandCartComponent } from "../../../components/Card";
+import { Loader } from "../../../components/Loader/Loader";
 
 const BrandsManagementPage = () => {
     const allBrands = useGetAllBrands()
 
-    if (allBrands.isLoading) return <>cargando...</>
+    if (allBrands.isLoading) return <Loader text='Cargando marcas...' />
 
     if (allBrands.isError){ 
         return <>
