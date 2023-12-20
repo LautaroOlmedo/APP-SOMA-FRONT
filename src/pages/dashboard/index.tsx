@@ -10,6 +10,8 @@ import { WelcomeImage } from '../../components/WelcomeImage/WelcomeImage';
 // import { Table } from '../../components/Table';
 
 const HomePage = () => {
+    const userString = localStorage.getItem('user');
+    const user = userString ? JSON.parse(userString) : null;
     // const data = [
     //     {
     //         id: '1',
@@ -234,7 +236,7 @@ const HomePage = () => {
         <div className={style.container}>
             {/* <Table<{id:string, email:string, name:string, tel:string}> data={data} columns={columns} /> */}
             <RouteHeading />
-            <ProfileBadge />
+            <ProfileBadge user={user}/>
             <WelcomeImage />
             <CalendarCard />
             <div className={style.accessContainer}>

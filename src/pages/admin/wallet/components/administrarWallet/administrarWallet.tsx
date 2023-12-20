@@ -3,15 +3,21 @@ import { FiFolderPlus, FiCheck } from 'react-icons/fi';
 import { BsArrowsMove, BsFileText } from 'react-icons/bs';
 import style from './index.module.css';
 import Imagen1 from '../../../../../assets/descarga.png'
+import { DndContext, closestCenter } from '@dnd-kit/core'
+import { SortableContext, verticalListSortingStrategy ,arrayMove} from '@dnd-kit/sortable'
+import ListAdministrarWallet from './listAdministrarWallet';
+
+
+
 function AdministrarWallet() {
   const [showForm, setShowForm] = useState(false);
   const [nombre, setNombre] = useState('');
   const [imagen, setImagen] = useState('');
   const [agregado, setAgregado] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [cards, setCards] = useState([{ name: 'MasterCard', date: '14/3/2022', image: Imagen1, icon: 'mastercard-icon.png' },
-  { name: 'VISA', date: '14/3/2022', image: Imagen1, icon: 'visa-icon.png' },
-  { name: 'PayPal', date: '14/3/2022', image: 'paypal-image.png', icon: 'paypal-icon.png' }]);
+  const [cards, setCards] = useState([{ id: 1, name: 'MasterCard', date: '14/3/2022', image: Imagen1, icon: 'mastercard-icon.png' },
+  { id: 2, name: 'VISA', date: '14/3/2022', image: Imagen1, icon: 'visa-icon.png' },
+  { id: 3, name: 'PayPal', date: '14/3/2022', image: 'paypal-image.png', icon: 'paypal-icon.png' }]);
   const handleNombreChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setNombre(event.target.value);
   };
@@ -32,7 +38,17 @@ function AdministrarWallet() {
       inputRef.current.click();
     }
   };
+  const handleDragEnd = (event: { active: any; over: any; }) => {
+    console.log("Antiguo",cards)
+    const {active,over } = event
 
+    const oldIndex = cards.findIndex(card => card.id === active.id)
+    const newIndex = cards.findIndex(card => card.id === over.id)
+    const newOrder = arrayMove(cards, oldIndex,newIndex)
+    console.log("Nuevo",newOrder)
+
+    setCards(newOrder)
+  }
   return (
     <div className={style.container}>
       {!agregado && (
@@ -86,24 +102,15 @@ function AdministrarWallet() {
         </div>
       )}
 
-<div className={style.cardsContainer}>
-  {cards.map((card, index) => (
-    <div className={style.card} key={index}>
-      <div className={style.cardDetails}>
-        <img src={card.image} alt={`${card.name} logo`} className={style.cardImage} />
-        <div className={style.cardInfo}>
-          <span>{card.name}</span>
-          <span style={{marginLeft:"25px"}}>Creado {card.date}</span>
-        </div>
-      </div>
-      <div className={style.iconOuterContainer}>
-        <div className={style.iconContainer}>
-          <BsArrowsMove style={{ fontSize: "40px" }} />
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
+
+      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <SortableContext items={cards} strategy={verticalListSortingStrategy}>
+          {cards.map((card) => (
+            <ListAdministrarWallet card={card} key={card.id}/>
+          ))}
+        </SortableContext>
+      </DndContext>
+
 
 
 

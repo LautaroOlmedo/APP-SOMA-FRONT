@@ -13,14 +13,27 @@ export const SidebarTest = ({ closeSidebar, setCloseSidebar }: { closeSidebar: b
 
     console.log('userData', userData.data)
 
-    // ...tu código existente
-
     const handleProductosClick = () => {
         navigate('/admin/panel/products/productManagement');
+    };
+    const handleHistorialVentasClick = () => {
+        navigate('/admin/panel/ventas/historialVentas')
+    }
+    const handlePuntoDeVentasClick = () => {
+        navigate('/admin/panel/ventas/puntoVentas')
+    }
+    const handleClientesClick = () => {
+        navigate('/admin/panel/clients');
+    };
+    const handleTeamsClick = () => {
+        navigate('/admin/panel/teams');
     };
     const handleWalletClick = () => {
         navigate('/admin/panel/wallet/walletManagement');
     };
+    const handleMovFinancieroClick = () => {
+        navigate('/admin/panel/finanzas/movimientosFinancieros')
+    }
     return (
         <div className={style.sidebarContainer}>
             <button className={`${style.collapseButton} ${closeSidebar ? style.moveLeft : style.moveRight}`} onClick={() => setCloseSidebar(!closeSidebar)}>
@@ -60,19 +73,19 @@ export const SidebarTest = ({ closeSidebar, setCloseSidebar }: { closeSidebar: b
                         <MenuItem icon={<CiCalendar />} className={style.menuItem}>Ciudad</MenuItem>
                     </SubMenu>
                     {!closeSidebar && <MenuItem className={style.menuItem} itemType='s'><b>GENERAL</b></MenuItem>}
-                    <MenuItem icon={<CiCalendar />} className={style.menuItem}>Equipo</MenuItem>
+                    <MenuItem icon={<CiCalendar />} className={style.menuItem} onClick={handleTeamsClick}>Equipo</MenuItem>
                     <SubMenu label="Productos" icon={<CiCalendar />}>
-                        <MenuItem icon={<CiCalendar />} className={style.menuItem}>Stock</MenuItem>
-                        <MenuItem icon={<CiCalendar />} className={style.menuItem} onClick={handleProductosClick}>Productos</MenuItem>
+                        <MenuItem icon={<CiCalendar />} className={style.menuItem} onClick={handleProductosClick}>Stock</MenuItem>
+                        <MenuItem icon={<CiCalendar />} className={style.menuItem}>Compras</MenuItem>
                     </SubMenu>
                     <SubMenu label="Ventas" icon={<CiCalendar />}>
-                        <MenuItem icon={<CiCalendar />} className={style.menuItem}>Puntos de ventas</MenuItem>
-                        <MenuItem icon={<CiCalendar />} className={style.menuItem} onClick={handleProductosClick}>Historial de ventas</MenuItem>
+                        <MenuItem icon={<CiCalendar />} className={style.menuItem} onClick={handlePuntoDeVentasClick}>Puntos de ventas</MenuItem>
+                        <MenuItem icon={<CiCalendar />} className={style.menuItem} onClick={handleHistorialVentasClick}>Historial de ventas</MenuItem>
                     </SubMenu>
-                    <MenuItem icon={<CiCalendar />} className={style.menuItem}>Clientes</MenuItem>
+                    <MenuItem icon={<CiCalendar />} className={style.menuItem} onClick={handleClientesClick}>Clientes</MenuItem>
                     <SubMenu label="Finanzas" icon={<CiCalendar />}>
-                        <MenuItem icon={<CiCalendar />} className={style.menuItem}>Historial de movimientos</MenuItem>
-                    <MenuItem icon={<CiCalendar />} className={style.menuItem} onClick={handleWalletClick}>Billeteras</MenuItem>
+                        <MenuItem icon={<CiCalendar />} className={style.menuItem} onClick={handleMovFinancieroClick}>Historial de movimientos</MenuItem>
+                        <MenuItem icon={<CiCalendar />} className={style.menuItem} onClick={handleWalletClick}>Billeteras</MenuItem>
 
                     </SubMenu>
                     <MenuItem icon={<CiCalendar />} className={style.menuItem} >Configuraciones</MenuItem>
