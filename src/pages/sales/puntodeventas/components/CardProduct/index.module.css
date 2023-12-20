@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@500&display=swap');
+html {
+  font-size: 16px;
+}
+body {
+  background-color: #e0e0e0;
+  color: #666666;
+  font-family: "Open Sans", sans-serif;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+/*** Cards ***/
+.card {
+  .card-title {
+    color: var(--bs-red);
+    font-size: var(--bs-h4-font-size);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .card-text {
+    font-size: 0.85rem;
+  }  
+  &.card-product {
+    padding: 0;
+    margin: 10px;
+    border: none;
+    background-color: #e0e0e0;
+    border-radius: 1rem;
+    box-shadow:3px 3px 6px rgba(128,128,128,.3),
+      -3px -3px 6px rgba(255,255,255,.3) !important;
+    overflow: hidden;
+    img {
+      opacity: 0.9;
+    }
+    &:hover {
+      background-color: #eaeaea;
+      box-shadow: 3px 3px 6px rgba(128,128,128,.5),
+      -3px -3px 6px rgba(255,255,255,.5) !important;
+      img {
+        opacity: 1;
+      }
+    }
+  }
+  .price {
+    display: inline-block;
+    font-size: 0.85rem;
+    .currency, .amount {
+      font-weight: bold;
+    }
+    .sale {
+      color: red;
+      text-decoration: line-through;
+      .currency, .amount {
+        font-weight: normal;
+      }
+    }
+  }
+  .card-body {
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+  }
+}
