@@ -1,17 +1,26 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { SetStateAction, Dispatch } from 'react';
+import React, { SetStateAction, Dispatch, useState } from 'react';
 import { CiCalendar } from 'react-icons/ci'
 import { GoChevronRight } from 'react-icons/go'
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import style from './index.module.css';
-import { useUserData } from '../../api/user/useGetUserById';
+import { useGetUserById } from '../../api/user/useGetUserById';
 import { useNavigate } from 'react-router-dom';
+import { useGetBrandById } from '../../api/brand/getBrandById';
 
 export const SidebarTest = ({ closeSidebar, setCloseSidebar }: { closeSidebar: boolean, setCloseSidebar: Dispatch<SetStateAction<boolean>> }) => {
-    const userData = useUserData()
     const navigate = useNavigate();
+    const user = localStorage.getItem('user');
+    const userData = user ? JSON.parse(user) : null;
+    const brandId = userData ? userData.brandId : null;
+    const userId = userData ? userData.id : null;
+    const getUserById = useGetUserById(userId);
+    const handleStoreClick = async (storeId: string) => {
+        console.log(storeId)
+    };
 
-    console.log('userData', userData.data)
+
+
 
     const handleProductosClick = () => {
         navigate('/admin/panel/products/productManagement');
@@ -34,6 +43,7 @@ export const SidebarTest = ({ closeSidebar, setCloseSidebar }: { closeSidebar: b
     const handleMovFinancieroClick = () => {
         navigate('/admin/panel/finanzas/movimientosFinancieros')
     }
+
     return (
         <div className={style.sidebarContainer}>
             <button className={`${style.collapseButton} ${closeSidebar ? style.moveLeft : style.moveRight}`} onClick={() => setCloseSidebar(!closeSidebar)}>
@@ -64,13 +74,21 @@ export const SidebarTest = ({ closeSidebar, setCloseSidebar }: { closeSidebar: b
                         }
                     }
                 }}>
-                    <MenuItem icon={<div className={style.imgContainer}>
-                        {userData.data?.brand?.image && <img className={style.img} src={userData.data.brand.image} alt='logo marca' />}
-                    </div>} className={style.menuItem} itemType='s'>{userData.data?.brand?.brandName}</MenuItem>
+                    {/* <MenuItem icon={<div className={style.imgContainer}>
+                        {brandData?.image && <img className={style.img} src={brandData.image} alt='logo marca' />}
+                    </div>} className={style.menuItem} itemType='s'>{brandData?.brandName}</MenuItem> */}
 
                     <SubMenu label="TIENDAS" icon={<CiCalendar />}>
-                        <MenuItem icon={<CiCalendar />} className={style.menuItem}>Godoy Cruz</MenuItem>
-                        <MenuItem icon={<CiCalendar />} className={style.menuItem}>Ciudad</MenuItem>
+                        {getUserById.data ? getUserById.data.storesIncludes?.map((storeid) => (
+                            <MenuItem
+                                key={storeid.id}
+                                icon={<CiCalendar />}
+                                className={style.menuItem}
+                                onClick={() => handleStoreClick(storeid.id)}
+                            >
+                                {storeid.store.storeName}
+                            </MenuItem>
+                        )) : <></>}
                     </SubMenu>
                     {!closeSidebar && <MenuItem className={style.menuItem} itemType='s'><b>GENERAL</b></MenuItem>}
                     <MenuItem icon={<CiCalendar />} className={style.menuItem} onClick={handleTeamsClick}>Equipo</MenuItem>
