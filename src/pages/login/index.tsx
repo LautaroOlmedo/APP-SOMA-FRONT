@@ -22,6 +22,7 @@ const LoginPage = () => {
                 title: "Error...",
                 text: "Usuario o contraseña son incorrectos",
             });
+            login.reset();
         }
     }
 
@@ -29,7 +30,8 @@ const LoginPage = () => {
         const accesToken = login.data?.data?.accesToken
         if (accesToken) {
             localStorage.setItem('token', accesToken)
-            localStorage.setItem('user', JSON.stringify(login.data.data.user))
+            console.log(login.data.data.user)
+            localStorage.setItem('user', JSON.stringify({ firstname: login?.data?.data?.user?.firstname, lastname: login?.data?.data?.user?.lastname, brandId: login?.data?.data?.user?.brand?.id, role: login?.data?.data?.user?.role, id:login?.data?.data?.user?.id }))
             navigate('/home');
             Swal.fire({
                 position: "top-end",
