@@ -31,7 +31,7 @@ const LoginPage = () => {
         if (accesToken) {
             localStorage.setItem('token', accesToken)
             console.log(login.data.data.user)
-            localStorage.setItem('user', JSON.stringify({ firstname: login?.data?.data?.user?.firstname, lastname: login?.data?.data?.user?.lastname, brandId: login?.data?.data?.user?.brand?.id, role: login?.data?.data?.user?.role, id:login?.data?.data?.user?.id }))
+            localStorage.setItem('user', JSON.stringify({ firstname: login?.data?.data?.user?.firstname, lastname: login?.data?.data?.user?.lastname, brandId: login?.data?.data?.user?.brand?.id, role: login?.data?.data?.user?.role, id:login?.data?.data?.user?.id, brandName:  login?.data?.data?.user?.brand?.brandName, brandImage:  login?.data?.data?.user?.brand?.image }))
             navigate('/home');
             Swal.fire({
                 position: "top-end",
