@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { SetStateAction, Dispatch, useState } from 'react';
+import React, { SetStateAction, Dispatch, useState,useEffect } from 'react';
 import { CiCalendar } from 'react-icons/ci'
 import { GoChevronRight } from 'react-icons/go'
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
@@ -7,20 +7,34 @@ import style from './index.module.css';
 import { useGetUserById } from '../../api/user/useGetUserById';
 import { useNavigate } from 'react-router-dom';
 import { useGetBrandById } from '../../api/brand/getBrandById';
+import { useGetStoreId } from '../../api/store/getStoreId';
+import { StoreType } from '../../interfaces/store.interface';
 
 export const SidebarTest = ({ closeSidebar, setCloseSidebar }: { closeSidebar: boolean, setCloseSidebar: Dispatch<SetStateAction<boolean>> }) => {
     const navigate = useNavigate();
     const user = localStorage.getItem('user');
     const userData = user ? JSON.parse(user) : null;
     const brandId = userData ? userData.brandId : null;
+    const brandName = userData ? userData.brandName : null;
+    const brandImage = userData ? userData.brandImage : null;
     const userId = userData ? userData.id : null;
     const getUserById = useGetUserById(userId);
+    const [storeInfo, setStoreInfo] = useState<StoreType | null>(null);   
+    const [selectedStoreId, setSelectedStoreId] = useState('');
+
     const handleStoreClick = async (storeId: string) => {
-        console.log(storeId)
+        setSelectedStoreId(storeId);
     };
-
-
-
+    
+  
+    const { data: storeData, isLoading, isError } = useGetStoreId(selectedStoreId);
+  
+    useEffect(() => {
+        if (storeData && storeData.data && selectedStoreId) {
+          setStoreInfo(storeData.data);
+          console.log(storeData.data)
+        }
+      }, [selectedStoreId, storeData]);
 
     const handleProductosClick = () => {
         navigate('/admin/panel/products/productManagement');
@@ -74,9 +88,9 @@ export const SidebarTest = ({ closeSidebar, setCloseSidebar }: { closeSidebar: b
                         }
                     }
                 }}>
-                    {/* <MenuItem icon={<div className={style.imgContainer}>
-                        {brandData?.image && <img className={style.img} src={brandData.image} alt='logo marca' />}
-                    </div>} className={style.menuItem} itemType='s'>{brandData?.brandName}</MenuItem> */}
+                    <MenuItem icon={<div className={style.imgContainer}>
+                        {brandImage && <img className={style.img} src={brandImage} alt='logo marca' />}
+                    </div>} className={style.menuItem} itemType='s'>{brandName}</MenuItem>
 
                     <SubMenu label="TIENDAS" icon={<CiCalendar />}>
                         {getUserById.data ? getUserById.data.storesIncludes?.map((storeid) => (
@@ -84,7 +98,7 @@ export const SidebarTest = ({ closeSidebar, setCloseSidebar }: { closeSidebar: b
                                 key={storeid.id}
                                 icon={<CiCalendar />}
                                 className={style.menuItem}
-                                onClick={() => handleStoreClick(storeid.id)}
+                                onClick={() => handleStoreClick(storeid.store.id)}
                             >
                                 {storeid.store.storeName}
                             </MenuItem>

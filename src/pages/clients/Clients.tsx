@@ -3,7 +3,8 @@ import Button from "react-bootstrap/Button";
 import style from "./index.module.css";
 import DataTable from "react-data-table-component";
 import { columnasClients } from "../../utils/ColumnsTable/columnasClients";
-const Ventas = () => {
+
+  const Clientes= () => {	
 	const [expandSearch, setExpandSearch] = useState(false);
 
 	const data = [
@@ -52,4 +53,4 @@ const Ventas = () => {
 	);
 };
 
-export default Ventas;
+export default Clientes;
